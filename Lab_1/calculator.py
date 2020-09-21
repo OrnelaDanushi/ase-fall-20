@@ -1,10 +1,10 @@
 #!/usr/bin/python
 #otherwise compile with $ python calculator.py instead of ./calculator.py
 
-#the module must work on integers in Z (both positive, both negative numbers)
+#the module must work on integers in Z (both positive and negative numbers)
 
 def sum(m, n):  
-  #must perform n increments (+1) to the value of m and return the result
+  #perform n increments (+1) to the value of m and return the result
 
   """
   if n>0:
@@ -15,7 +15,7 @@ def sum(m, n):
       m -= 1
   """
   """
-  while n!=0 : #my solution: 
+  while n!=0 :  
     if n>0:     
       m += 1 
       n -= 1
@@ -32,7 +32,7 @@ def sum(m, n):
 #print(str(sum(3,5)))
 
 def divide(m, n):
-  #must substract n from m until it gets to 0 and return the result
+  #substract n from m until it gets to 0 and return the result
 
   result=0 
   negativeResult= m>0 and n<0 or m<0 and n>0
@@ -42,25 +42,25 @@ def divide(m, n):
     raise ZeroDivisionError('n should be not 0')
   else:
     while( m-n>=0 ):
-      m-=n 
-      #m=sum(m,-n) 
+      m-=n       #m=sum(m,-n) 
       result+=1
     result= -result if negativeResult else result
   return result
 #print(str(divide(10,5)))
 
 def subtract(m,n):
-  #must perform n decrements (-1) to the value of m and return the result  
-  if n>0: 
-    for _ in range(n): 
-      m -= 1
-  else: 
-    for _ in range(abs(n)):
-      m += 1
-  return m 
+  #perform n decrements (-1) to the value of m and return the result  
+
+  sign = 1 if n>0 else -1
+  n = abs(n)
+  while n!=0 :
+    m -= sign
+    n -= 1
+  return m
 
 def multiply(m,n):
-  #must sum the value of m for n times and return the result
+  #sum the value of m for n times and return the result
+
   negativeResult= m>0 and n<0 or m<0 and n>0
   n=abs(n)
   m=abs(m)  
@@ -75,7 +75,8 @@ def multiply(m,n):
     return i
 
 def gcd(m,n):
-  #must implement Euclid's Algorithm
+  #implement Euclid's Algorithm
+
   result=0
   while n!=0: 
     result=m%n
